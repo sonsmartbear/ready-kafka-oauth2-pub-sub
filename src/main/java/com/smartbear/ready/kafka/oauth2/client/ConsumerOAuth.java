@@ -56,7 +56,7 @@ public class ConsumerOAuth {
         properties.setProperty("sasl.jaas.config", "org.apache.kafka.common.security.oauthbearer.OAuthBearerLoginModule required ;");
         properties.setProperty("security.protocol", "SASL_PLAINTEXT");
         properties.setProperty("sasl.mechanism", "OAUTHBEARER");
-        properties.setProperty("sasl.login.callback.handler.class", "com.waverley.kafka.oauth2.config.OauthAuthenticateLoginCallbackHandler");
+        properties.setProperty("sasl.login.callback.handler.class", "com.smartbear.ready.kafka.oauth2.config.OauthAuthenticateLoginCallbackHandler");
 
         return properties;
     }
