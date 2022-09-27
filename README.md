@@ -73,3 +73,7 @@ java -cp "ready-kafka-oauth2-pub-sub-1.0-SNAPSHOT.jar:/Users/macbook/Docs/pro_in
 ```
 - Once you start producer successfully
 ![img.png](images/img_producer.png)
+
+- Some of images show up Apache Kafka and Zookeeper log console, let you know they start them successfully and they have used OAuth 2 already.
+![img.png](images/img_kafka_log.png)
+![img.png](images/img_kafka_log_1.png)
