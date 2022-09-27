@@ -1,5 +1,24 @@
 # Kafka OAuth 2.0
 
+## Build up Apache Kafka - Okta - OAuth 2.0
+
+### Register a new account with Okta Server
+To register a new account Okta
+- Open https://developer.okta.com/signup/ URL to register. Here We use an account as per below
+```
+Id: cong.dang@waverleysoftware.com
+Pass: alibaba123
+```
+
+### Build Container for Apache Kafka - Zookeeper
+To build Apache Kafka - Zookeeper
+- Open folder docker-kafka-zookeeper-server and execute command as per below:
+```
+docker-compose up
+```
+- You have to ensure you computer get 2 port as free: 2181 and 9092. After you completed docker-compose then you can see image
+![img.png](images/img_kafka_zookeeper.png)
+
 ## Client X Broker Authentication
 
 ### Build the project
@@ -15,7 +34,7 @@ mvn clean compile dependency:copy-dependencies jar:jar
 Id: cong.dang@waverleysoftware.com
 Pass: alibaba123
 ```
-- Open th Postman and enter the value as per below:
+- Open the Postman and enter the value as per below:
 ```
 Grant Type: Client Credentials
 Access Token URL: https://dev-68831743.okta.com/oauth2/aasokta/v1/token
@@ -24,8 +43,10 @@ Client Secret: 0GYiLcM0V23yV8Kngcd5DvVaeuOxJT8r7hPhQ70e
 Scope: kafka
 Client Authentication: Send as Basic Header
 ```
+- Now, click on "Get New Access Token"
+![img.png](images/img_access_token.png)
 
-### Container Environments
+### Configure Environments For Pub/Sub
 For client broker authentication, configure this environment variables:
 
 - OAUTH2_ACCESS_TOKEN: use Postman or any tools to get an access token
@@ -50,3 +71,5 @@ java -cp "ready-kafka-oauth2-pub-sub-1.0-SNAPSHOT.jar:/Users/macbook/Docs/pro_in
 ```
 java -cp "ready-kafka-oauth2-pub-sub-1.0-SNAPSHOT.jar:/Users/macbook/Docs/pro_intellij/apache_kafka/ready-kafka-oauth2-pub-sub-second/target/dependency/*" com.smartbear.ready.kafka.oauth2.client.ProducerOAuth
 ```
+- Once you start producer successfully
+![img.png](images/img_producer.png)

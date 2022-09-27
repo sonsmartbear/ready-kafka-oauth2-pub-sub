@@ -1,0 +1,40 @@
+version: '3.5'
+
+services:
+  zookeeper:
+    image: namson0482/zookeeper:1.0
+    ports:
+      - "2181:2181"
+
+  kafka:
+    image: congdtvn/kafka-oauth2-cc-wav:1.0.0
+    ports:
+      - "9092:9092"
+    links:
+      - zookeeper:zookeeper
+    depends_on:
+      - zookeeper
+    environment:
+      # KAFKA Configuration
+      KAFKA_ZOOKEEPER_CONNECT: "zookeeper:2181"
+      EXTRA_ARGS: "-Djava.security.auth.login.config=/opt/kafka/config/kafka_server_jaas.conf"
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: SASL_PLAINTEXT:SASL_PLAINTEXT
+      KAFKA_LISTENERS: "SASL_PLAINTEXT://:9092"
+      KAFKA_ADVERTISED_LISTENERS: "SASL_PLAINTEXT://localhost:9092"
+      # KAFKA Security
+      KAFKA_SECURITY_INTER_BROKER_PROTOCOL: SASL_PLAINTEXT
+      KAFKA_SASL_MECHANISM_INTER_BROKER_PROTOCOL: OAUTHBEARER
+      KAFKA_SASL_ENABLED_MECHANISMS: OAUTHBEARER
+      KAFKA_CREATE_TOPICS: "topic_default:1:1"
+      # OAuth Configuration
+      OAUTH_WITH_SSL: "true"
+      OAUTH_LOGIN_SERVER : "dev-68831743.okta.com"
+      OAUTH_LOGIN_ENDPOINT : "/oauth2/aasokta/v1/token"
+      OAUTH_LOGIN_GRANT_TYPE: "client_credentials"
+      OAUTH_LOGIN_SCOPE: "kafka"
+      OAUTH_AUTHORIZATION : "Basic MG9hNmtpZjJrcWlRQnliS1Q1ZDc6MEdZaUxjTTBWMjN5VjhLbmdjZDVEdlZhZXVPeEpUOHI3aFBoUTcwZQ=="
+      OAUTH_INTROSPECT_SERVER : "dev-68831743.okta.com"
+      OAUTH_INTROSPECT_ENDPOINT : "/oauth2/aasokta/v1/introspect"
+      OAUTH_INTROSPECT_AUTHORIZATION : "Basic MG9hNmtpZjJrcWlRQnliS1Q1ZDc6MEdZaUxjTTBWMjN5VjhLbmdjZDVEdlZhZXVPeEpUOHI3aFBoUTcwZQ=="
+
+
