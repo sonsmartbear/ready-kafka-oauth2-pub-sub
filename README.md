@@ -16,7 +16,7 @@ To build Apache Kafka - Zookeeper
 ```
 docker-compose up
 ```
-- You have to ensure you computer get 2 port as free: 2181 and 9092. After you completed docker-compose then you can see image
+- You have to ensure your computer get 2 port as free: 2181 and 9092. After you completed docker-compose then you can see image
 ![img.png](images/img_kafka_zookeeper.png)
 
 ## Client X Broker Authentication
