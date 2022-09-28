@@ -64,12 +64,12 @@ Open 2 terminal window and go to target folder.
 
 - Execute a consumer by command below, remember change path of project folder in command below corresponding to your configuration:
 ```
-java -cp "ready-kafka-oauth2-pub-sub-1.0-SNAPSHOT.jar:/Users/macbook/Docs/pro_intellij/apache_kafka/ready-kafka-oauth2-pub-sub/target/dependency/*" com.smartbear.ready.kafka.oauth2.client.ConsumerOAuth
+./subscriber.sh
 ```
 
 - Clone your project into a other folder, here I clone it into ready-kafka-oauth2-pub-sub-second folder and execute a publisher by command below, remember change path of project folder in command below corresponding to your configuration:
 ```
-java -cp "ready-kafka-oauth2-pub-sub-1.0-SNAPSHOT.jar:/Users/macbook/Docs/pro_intellij/apache_kafka/ready-kafka-oauth2-pub-sub-second/target/dependency/*" com.smartbear.ready.kafka.oauth2.client.ProducerOAuth
+./publisher.sh
 ```
 - Once you start producer successfully
 ![img.png](images/img_producer.png)
