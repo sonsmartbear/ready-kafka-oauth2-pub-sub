@@ -8,6 +8,7 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -15,6 +16,19 @@ public class ProducerOAuth {
     private static final Logger log = LoggerFactory.getLogger(ProducerOAuth.class);
 
     public static String ACCESS_TOKEN = "";
+
+    static {
+        Properties propsValue = new Properties();
+        try {
+            propsValue.load(ClassLoader.getSystemResourceAsStream("test.properties"));
+            log.info(propsValue.getProperty("firstname"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
     public static void main(String[] args) {
         if(args.length == 1) {
             ProducerOAuth.ACCESS_TOKEN = args[0];
