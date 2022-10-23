@@ -26,7 +26,6 @@ public class OauthHttpCalls {
     private static final Logger log = LoggerFactory.getLogger(OauthHttpCalls.class);
 
     private static final String OAUTH_LOGIN_SERVER = (String) getEnvironmentVariables("OAUTH_LOGIN_SERVER", "dev-68831743.okta.com");
-//    private static final String OAUTH_LOGIN_ENDPOINT = (String) getEnvironmentVariables("OAUTH_LOGIN_ENDPOINT", "/oauth2/aasokta/v1/token");
     private static final String OAUTH_LOGIN_ENDPOINT = (String) getEnvironmentVariables("OAUTH_LOGIN_ENDPOINT", "");
     private static final String OAUTH_LOGIN_GRANT_TYPE = (String) getEnvironmentVariables("OAUTH_LOGIN_GRANT_TYPE", "client_credentials");
     private static final String OAUTH_LOGIN_SCOPE = (String) getEnvironmentVariables("OAUTH_LOGIN_SCOPE", "kafka");
@@ -34,7 +33,7 @@ public class OauthHttpCalls {
     private static final String OAUTH_INTROSPECT_SERVER = (String) getEnvironmentVariables("OAUTH_INTROSPECT_SERVER", "");
     private static final String OAUTH_INTROSPECT_ENDPOINT = (String) getEnvironmentVariables("OAUTH_INTROSPECT_ENDPOINT", "");
 
-    private static final String OAUTH_LOGIN_AUTHORIZATION = (String) getEnvironmentVariables("OAUTH_AUTHORIZATION", "Basic MG9hNmtpZjJrcWlRQnliS1Q1ZDc6MEdZaUxjTTBWMjN5VjhLbmdjZDVEdlZhZXVPeEpUOHI3aFBoUTcwZQ==");
+    private static final String OAUTH_LOGIN_AUTHORIZATION = (String) getEnvironmentVariables("OAUTH_AUTHORIZATION", "Basic a2Fma2EtcHJvZHVjZXItY2xpZW50OmthZmthLXByb2R1Y2VyLWNsaWVudC1zZWNyZXQ=");
     private static final String OAUTH_INTROSPECT_AUTHORIZATION = (String) getEnvironmentVariables("OAUTH_INTROSPECT_AUTHORIZATION", "");
 
     private static final boolean OAUTH_ACCEPT_UNSECURE_SERVER = (Boolean) getEnvironmentVariables("OAUTH_ACCEPT_UNSECURE_SERVER", false);

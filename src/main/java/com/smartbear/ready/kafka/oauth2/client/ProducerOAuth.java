@@ -1,5 +1,6 @@
 package com.smartbear.ready.kafka.oauth2.client;
 
+import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -16,18 +17,6 @@ public class ProducerOAuth {
     private static final Logger log = LoggerFactory.getLogger(ProducerOAuth.class);
 
     public static String ACCESS_TOKEN = "";
-
-    static {
-        Properties propsValue = new Properties();
-        try {
-            propsValue.load(ClassLoader.getSystemResourceAsStream("test.properties"));
-            log.info(propsValue.getProperty("firstname"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
 
     public static void main(String[] args) {
         if(args.length == 1) {
@@ -80,8 +69,11 @@ public class ProducerOAuth {
         Properties properties = new Properties();
 
         // kafka bootstrap server
-        properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, getEnvironmentVariables("BOOTSTRAP_SERVERS_CONFIG", "127.0.0.1:9092"));
+        String bootstrapServer = (String) getEnvironmentVariables(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        properties.setProperty(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer);
+//        properties.setProperty(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         properties.setProperty(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+
         properties.setProperty(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         // producer acks
         properties.setProperty(ProducerConfig.ACKS_CONFIG, "all");

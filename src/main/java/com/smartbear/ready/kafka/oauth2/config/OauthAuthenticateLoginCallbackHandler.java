@@ -63,15 +63,16 @@ public class OauthAuthenticateLoginCallbackHandler implements AuthenticateCallba
             throw new IllegalArgumentException("Callback had a token already");
 
         log.info("Try to acquire token!");
-//        OauthBearerTokenJwt token = OauthHttpCalls.login(null);
-        String accessToken = (String) OauthHttpCalls.getEnvironmentVariables("OAUTH2_ACCESS_TOKEN", "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJqRHN1NDc0RXdfYVZQYkxHTzFBTWwxQUotVEUtbjdCdVBXaUMtbkNsR0JNIn0.eyJleHAiOjE2NjUwMDc4MDMsImlhdCI6MTY2NDk3MTgwMywianRpIjoiNTE4MGFkZTMtNTQ1Yy00YzcyLWEzN2ItNTVmYTI1NDFmMzA2IiwiaXNzIjoiaHR0cDovL2tleWNsb2FrOjgwODAvYXV0aC9yZWFsbXMvZGVtbyIsInN1YiI6IjhjOWVkZGE1LThlODAtNGZlNC1iMTNhLWY1M2U5Y2MwMzgxYiIsInR5cCI6IkJlYXJlciIsImF6cCI6ImthZmthLXByb2R1Y2VyLWNsaWVudCIsImFjciI6IjEiLCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJjbGllbnRJZCI6ImthZmthLXByb2R1Y2VyLWNsaWVudCIsImNsaWVudEhvc3QiOiIxNzIuMjEuMC4xIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJzZXJ2aWNlLWFjY291bnQta2Fma2EtcHJvZHVjZXItY2xpZW50IiwiY2xpZW50QWRkcmVzcyI6IjE3Mi4yMS4wLjEiLCJlbWFpbCI6InNlcnZpY2UtYWNjb3VudC1rYWZrYS1wcm9kdWNlci1jbGllbnRAcGxhY2Vob2xkZXIub3JnIn0.C8MZ3GbyvZBjsE7TwwFVaZxkStcvtoyD15RgT6QN6eqDII1AaseMnz6Rr79_ob00X2VLNOGlcrTiXaUtJBuF8POr5MbXH-21srIDHfumoAwpknq2s8rFztnu7EQuZGERbnSxrqw2CWQox5LcQuK9eMbc39hnVWsCCkM3-vOtAEZpJOHLiDvqy3TDwqot03TtliQrPQg7yMTzRrV01-FyIB733FmiQ95wqOLTUW-hdO0iWr-0jARUZCzvKLHOoy_V0UD38ilLfilTD1_UTDDKGwBpi28sZdBrkH0kF9kSUPEpXalEb0ixEXOJ5JtIQZjpTl8Me2C8W9PZQ83aSrbMDg");
-        OauthBearerTokenJwt token = new OauthBearerTokenJwt(accessToken
+//        OauthBearerTokenJwt oauthBearerTokenJwt = OauthHttpCalls.login(null);
+//        0oa6kif2kqiQBybKT5d7
+        String accessToken = (String) OauthHttpCalls.getEnvironmentVariables("OAUTH2_ACCESS_TOKEN", "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIwNHo1U1FrZk1PR05YU1pVaHViSy1DSU5zMnRvZkp0dTNYS0IxZWZncUZvIn0.eyJleHAiOjE2NjY0Njk1MDMsImlhdCI6MTY2NjQzMzUwMywianRpIjoiOGY3MjdmNTktZjhlMi00MDhiLTk5ZWYtZGFiNDk2NDNjMmUwIiwiaXNzIjoiaHR0cDovL2tleWNsb2FrOjgwODAvYXV0aC9yZWFsbXMvZGVtbyIsInN1YiI6Ijk4ZWY1MzdjLWQzNzItNDA4My05MmZlLTkyNThjNWYzMjQzMyIsInR5cCI6IkJlYXJlciIsImF6cCI6ImthZmthLXByb2R1Y2VyLWNsaWVudCIsImFjciI6IjEiLCJzY29wZSI6ImVtYWlsIHByb2ZpbGUiLCJjbGllbnRJZCI6ImthZmthLXByb2R1Y2VyLWNsaWVudCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiY2xpZW50SG9zdCI6IjE3Mi4yNy4wLjEiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJzZXJ2aWNlLWFjY291bnQta2Fma2EtcHJvZHVjZXItY2xpZW50IiwiY2xpZW50QWRkcmVzcyI6IjE3Mi4yNy4wLjEiLCJlbWFpbCI6InNlcnZpY2UtYWNjb3VudC1rYWZrYS1wcm9kdWNlci1jbGllbnRAcGxhY2Vob2xkZXIub3JnIn0.fPphBG9yeRqddgTqZ9nB_nWuujn8LFJm3ugbBEquoSCOZ45nqJnFDhEC8BzYoXErszj1-WXlBxDKgAwXkk_RvrH4Vy47ouY1XwMBhq6sd65Jbb20ivq_f3LVU5089DIZ2iiB9MCEkmPW2C0-LExlEbModl-Si3eQcwtratF1do2GsY8XcVBUs46Vd1BEjUbGTM7zXZL7hUsLukr4d_EeGlAgJoK68hdyncUSIYOrx9xRG57NbOEmT4V9S06M1VLO0rk1F9JTMrDvGZeDryoNEE2bkr0X1tB2A0UyMoag4euNYkxcBeYCIEGAbM6iDFlkUwuLvDrwsMECtOtV79qGxQ");
+        OauthBearerTokenJwt oauthBearerTokenJwt = new OauthBearerTokenJwt(accessToken
                 , 3600000l, 1663948450514l, "0oa6kif2kqiQBybKT5d7");
         log.info("Retrieved token..");
-        if(token == null){
+        if(oauthBearerTokenJwt == null){
             throw new IllegalArgumentException("Null token returned from server");
         }
-        callback.token(token);
+        callback.token(oauthBearerTokenJwt);
     }
 
 }
